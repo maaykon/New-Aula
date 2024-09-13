@@ -1,9 +1,14 @@
-let botaocalcular = document.getElementById('btnCalcular');
+let botaocalcular = document.getElementById('#btnCalcular');
 
 function calculadoraIMC(){
     let peso = document.getElementById('peso').value;
-    let altura = document.getElementById('altura').value;
-    let resultado = document.getElementById('resultado').value;
+    let altura = document.getElementById('altura').value/100;
+    let resultado = document.getElementById('resultado');
+
+    if(altura !=="" && peso !==""){
+        imc = (peso / (altura * altura)).toFixed(1);
+        let mensagem = "";
+    
 
     if(imc<18.5){
         mensagem = "Abaixo do peso";
@@ -29,4 +34,15 @@ function calculadoraIMC(){
         mensagem = "Obesidade III";
     }
 
+    resultado.textContent = "Seu IMC é" +imc+ "e você esta" + mensagem;
+    }
+    else{
+        resultado.textContent = "Preencha todos os campos";
+    }
+
 }
+
+botaocalcular.addEventListener('click', calculadoraIMC)
+
+
+
